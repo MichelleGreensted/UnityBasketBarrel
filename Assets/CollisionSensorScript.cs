@@ -8,10 +8,12 @@ public class CollisionSensorScript : MonoBehaviour
     public float Score;
     public Text ScoreText;
     public List<Material> Materials;
+    public AudioClip BasketSuccessSound;
+    public AudioSource AudioSource;
     // Start is called before the first frame update
     void Start()
     {
-        ScoreText.text = "Score:" + 1;
+        ScoreText.text = "Score:" + Score;
     }
 
     // Update is called once per frame
@@ -30,6 +32,7 @@ public class CollisionSensorScript : MonoBehaviour
         ScoreText.text = "Score:" + Score;
         other.gameObject.GetComponent<MeshRenderer>().material = getRandomElement(Materials);
         Debug.Log(Score);
-        Destroy(other.gameObject);
+        //Destroy(other.gameObject);
+        AudioSource.PlayOneShot(BasketSuccessSound);
     }
 }
